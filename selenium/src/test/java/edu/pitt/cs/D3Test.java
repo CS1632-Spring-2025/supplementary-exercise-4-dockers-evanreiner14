@@ -39,7 +39,9 @@ public class D3Test {
   JavascriptExecutor js;
   @Before
   public void setUp() {
-    driver = new ChromeDriver();
+    ChromeOptions options = new ChromeOptions();
+    options.addArguments("--headless");
+    driver = new ChromeDriver(options);
     js = (JavascriptExecutor) driver;
     vars = new HashMap<String, Object>();
   }
@@ -53,7 +55,7 @@ public class D3Test {
     // Test name: TEST-1-LINKS
     // Step # | name | target | value
     // 1 | open | / | 
-    driver.get("https://cs1632.appspot.com//");
+    driver.get("http://localhost:8080");
     // 2 | runScript | document.cookie = "1=false";document.cookie = "2=false";document.cookie = "3=false"; | 
     js.executeScript("document.cookie = \"1=false\";document.cookie = \"2=false\";document.cookie = \"3=false\";");
     // 3 | storeAttribute | linkText=Reset@href | resetLink
@@ -63,7 +65,7 @@ public class D3Test {
       vars.put("resetLink", attribute);
     }
     // 4 | assert | resetLink | /reset
-    assertEquals(vars.get("resetLink").toString(), "https://cs1632.appspot.com/reset");
+    assertEquals(vars.get("resetLink").toString(), "http://localhost:8080/reset");
     // 5 | close |  | 
     driver.close();
   }
@@ -72,7 +74,7 @@ public class D3Test {
     // Test name: TEST-2-RESET
     // Step # | name | target | value
     // 1 | open | / | 
-    driver.get("https://cs1632.appspot.com//");
+    driver.get("http://localhost:8080");
     // 2 | runScript | document.cookie = "1=true";document.cookie = "2=true";document.cookie = "3=true"; | 
     js.executeScript("document.cookie = \"1=true\";document.cookie = \"2=true\";document.cookie = \"3=true\";");
     // 3 | click | linkText=Reset | 
@@ -91,7 +93,7 @@ public class D3Test {
     // Test name: TEST-3-CATALOG
     // Step # | name | target | value
     // 1 | open | / | 
-    driver.get("https://cs1632.appspot.com//");
+    driver.get("http://localhost:8080");
     // 2 | runScript | document.cookie = "1=false";document.cookie = "2=false";document.cookie = "3=false"; | 
     js.executeScript("document.cookie = \"1=false\";document.cookie = \"2=false\";document.cookie = \"3=false\";");
     // 3 | click | linkText=Catalog | 
@@ -103,7 +105,7 @@ public class D3Test {
       vars.put("imageSrc", attribute);
     }
     // 5 | assert | imageSrc | /images/cat2.jpg
-    assertEquals(vars.get("imageSrc").toString(), "https://cs1632.appspot.com/images/cat2.jpg");
+    assertEquals(vars.get("imageSrc").toString(), "http://localhost:8080/images/cat2.jpg");
     // 6 | close |  | 
     driver.close();
   }
@@ -112,7 +114,7 @@ public class D3Test {
     // Test name: TEST-4-LISTING
     // Step # | name | target | value
     // 1 | open | / | 
-    driver.get("https://cs1632.appspot.com//");
+    driver.get("http://localhost:8080");
     // 2 | runScript | document.cookie = "1=false";document.cookie = "2=false";document.cookie = "3=false"; | 
     js.executeScript("document.cookie = \"1=false\";document.cookie = \"2=false\";document.cookie = \"3=false\";");
     // 3 | click | linkText=Catalog | 
@@ -137,7 +139,7 @@ public class D3Test {
     // Test name: TEST-5-RENT-A-CAT
     // Step # | name | target | value
     // 1 | open | / | 
-    driver.get("https://cs1632.appspot.com//");
+    driver.get("http://localhost:8080");
     // 2 | runScript | document.cookie = "1=false";document.cookie = "2=false";document.cookie = "3=false"; | 
     js.executeScript("document.cookie = \"1=false\";document.cookie = \"2=false\";document.cookie = \"3=false\";");
     // 3 | click | linkText=Rent-A-Cat | 
@@ -160,7 +162,7 @@ public class D3Test {
     // Test name: TEST-6-RENT
     // Step # | name | target | value
     // 1 | open | / | 
-    driver.get("https://cs1632.appspot.com//");
+    driver.get("http://localhost:8080");
     // 2 | runScript | document.cookie = "1=false";document.cookie = "2=false";document.cookie = "3=false"; | 
     js.executeScript("document.cookie = \"1=false\";document.cookie = \"2=false\";document.cookie = \"3=false\";");
     // 3 | click | linkText=Rent-A-Cat | 
@@ -187,7 +189,7 @@ public class D3Test {
     // Test name: TEST-7-RETURN
     // Step # | name | target | value
     // 1 | open | / | 
-    driver.get("https://cs1632.appspot.com//");
+    driver.get("http://localhost:8080");
     // 2 | runScript | document.cookie = "1=false";document.cookie = "2=true";document.cookie = "3=false"; | 
     js.executeScript("document.cookie = \"1=false\";document.cookie = \"2=true\";document.cookie = \"3=false\";");
     // 3 | click | linkText=Rent-A-Cat | 
@@ -214,7 +216,7 @@ public class D3Test {
     // Test name: TEST-8-FEED-A-CAT
     // Step # | name | target | value
     // 1 | open | / | 
-    driver.get("https://cs1632.appspot.com//");
+    driver.get("http://localhost:8080");
     // 2 | runScript | document.cookie = "1=false";document.cookie = "2=false";document.cookie = "3=false"; | 
     js.executeScript("document.cookie = \"1=false\";document.cookie = \"2=false\";document.cookie = \"3=false\";");
     // 3 | click | linkText=Feed-A-Cat | 
@@ -232,7 +234,7 @@ public class D3Test {
     // Test name: TEST-9-FEED
     // Step # | name | target | value
     // 1 | open | / | 
-    driver.get("https://cs1632.appspot.com//");
+    driver.get("http://localhost:8080");
     // 2 | runScript | document.cookie = "1=false";document.cookie = "2=false";document.cookie = "3=false"; | 
     js.executeScript("document.cookie = \"1=false\";document.cookie = \"2=false\";document.cookie = \"3=false\";");
     // 3 | click | linkText=Feed-A-Cat | 
@@ -258,7 +260,7 @@ public class D3Test {
     // Test name: TEST-10-GREET-A-CAT
     // Step # | name | target | value
     // 1 | open | / | 
-    driver.get("https://cs1632.appspot.com//");
+    driver.get("http://localhost:8080");
     // 2 | runScript | document.cookie = "1=false";document.cookie = "2=false";document.cookie = "3=false"; | 
     js.executeScript("document.cookie = \"1=false\";document.cookie = \"2=false\";document.cookie = \"3=false\";");
     // 3 | click | linkText=Greet-A-Cat | 
@@ -276,7 +278,7 @@ public class D3Test {
     // Test name: TEST-11-GREET-A-CAT-WITH-NAME
     // Step # | name | target | value
     // 1 | open | /greet-a-cat/Jennyanydots | 
-    driver.get("https://cs1632.appspot.com//greet-a-cat/Jennyanydots");
+    driver.get("http://localhost:8080greet-a-cat/Jennyanydots");
     // 2 | assertElementPresent | xpath=//h4[contains(.,'Meow! from Jennyanydots.')] | 
     {
       List<WebElement> elements = driver.findElements(By.xpath("//h4[contains(.,\'Meow! from Jennyanydots.\')]"));
