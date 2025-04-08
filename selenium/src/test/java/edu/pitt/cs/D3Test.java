@@ -279,7 +279,7 @@ public class D3Test {
     // Test name: TEST-11-GREET-A-CAT-WITH-NAME
     // Step # | name | target | value
     // 1 | open | /greet-a-cat/Jennyanydots | 
-    driver.get("http://localhost:8080greet-a-cat/Jennyanydots");
+    driver.get("http://localhost:8080/greet-a-cat/Jennyanydots");
     // 2 | assertElementPresent | xpath=//h4[contains(.,'Meow! from Jennyanydots.')] | 
     {
       List<WebElement> elements = driver.findElements(By.xpath("//h4[contains(.,\'Meow! from Jennyanydots.\')]"));
